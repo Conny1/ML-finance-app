@@ -1,7 +1,8 @@
 import {useMemo} from 'react'
 import styled from 'styled-components'
 import { useGetKpisQuery, useGetProductsQuery } from '../state/api'
-import { CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts'
+import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis } from 'recharts'
+import Boxheader from '../components/Boxheader'
 const Wrapper = styled.div`
 /* width:100%; */
     background-color:#27262a;
@@ -12,10 +13,11 @@ const Wrapper = styled.div`
 const Container = styled.div`
     display:flex;
     justify-content:space-evenly;
-    /* outline:1px solid red; */
-    height:100%;
+    /* outline:1px solid yellow; */
+    height: fit-content ;
     color:#e0d9d9;
     align-items:center;
+    margin-top:0;
     /* width:100%; */
     
 `
@@ -36,11 +38,9 @@ const Text = styled.p`
     font-size:11px;
     color:#979595;
 `
-interface Props {
-    
-}
 
-const Row1 = (props: Props) => {
+
+const Row1 = () => {
     const {data: Operational} = useGetKpisQuery()
     
     const {data:product} = useGetProductsQuery()
@@ -85,6 +85,10 @@ const Row1 = (props: Props) => {
     return (
         <>
         <Wrapper style={{gridArea:"d" }} >
+        <Boxheader
+          title="Operational vs Non-Operational Expenses"
+          sidetext="+4%"
+        />
         <ResponsiveContainer width="100%" height="100%">
         <LineChart
           width={500}
@@ -123,6 +127,7 @@ const Row1 = (props: Props) => {
         </Wrapper>
         
     <Wrapper style={{gridArea:"e" }} >
+    <Boxheader title="Campaigns and Targets" sidetext="+4%" />
     <Container   >
     <PieChart width={110}
             height={100}
@@ -163,6 +168,7 @@ const Row1 = (props: Props) => {
     </Wrapper>
     
     <Wrapper style={{gridArea:"f" }} >
+    <Boxheader title="Product Prices vs Expenses" sidetext="+4%" />
     <ResponsiveContainer width="100%" height="100%">
         <ScatterChart
           margin={{

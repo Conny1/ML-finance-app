@@ -2,6 +2,7 @@
 import styled from "styled-components"
 import NavBar from "./scenes/NavBar"
 import Dashboard from "./scenes/Dashboard"
+import Predictions from "./scenes/Predictions"
 
 const Container = styled.div`
 width:100%;
@@ -19,7 +20,7 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path="/"  element={<Dashboard/>} />
-          <Route path="/predictions"  element={<h1>Predictions</h1>} />
+          <Route path="/predictions"  element={<Predictions/>} />
         </Routes>
       </Container>
       </BrowserRouter>

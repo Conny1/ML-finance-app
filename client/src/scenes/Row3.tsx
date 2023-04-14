@@ -48,7 +48,6 @@ const Row1 = (props: Props) => {
     const { data:products } = useGetProductsQuery()
     const { data:kpis } = useGetKpisQuery()
 
-    console.log(kpis)
 
     const pieData = useMemo(() => {
       if(kpis){
@@ -148,6 +147,7 @@ const Row1 = (props: Props) => {
 
     </Wrapper>
     <Wrapper style={{gridArea:"i" }} >
+    <Boxheader title="Expense Breakdown By Category" sidetext="+4%" />
     <Container   >
     {
       pieData?.map((data,i)=>{
@@ -183,6 +183,10 @@ const Row1 = (props: Props) => {
       </Container>
     </Wrapper>
     <Wrapper style={{gridArea:"j" }} >
+    <Boxheader
+          title="Overall Summary and Explanation Data"
+          sidetext="+15%"
+        />
       <Box style={{ height:"15px",
           // margin:"1.25rem 1rem 0.4rem 1rem",
           backgroundColor: "#157a68" ,

@@ -58,12 +58,12 @@ display:grid;
 justify-content: center;
 gap:1.5rem;
 grid-template-columns:repeat(3, 30%);
-grid-template-rows:repeat(10, 60px );
+grid-template-rows:repeat(10, 80px );
 grid-template-areas:${gridTemplateLargerScreens};
 @media(max-width:1059px) {
 /* grid-auto-columns:1fr; */
 grid-template-columns:1fr;
-grid-auto-rows:80px;
+grid-auto-rows:90px;
 height:auto;
 grid-template-areas:${gridTemplateSmallerScreens};
 }
