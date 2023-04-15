@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Row1 from './Row1'
 import Row2 from './Row2'
 import Row3 from './Row3'
+import { useGetKpisQuery } from '../state/api'
+import load from '../assets/load.gif'
 
 const gridTemplateLargerScreens=`
 "a b c"
@@ -68,12 +70,32 @@ height:auto;
 grid-template-areas:${gridTemplateSmallerScreens};
 }
 `
+const LoadingIcon = styled.div`
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+`
+const Image = styled.img`
+width:100px;
+height:100px;
+
+`
+const Text = styled.p`
+  color: #7c7b7b;
+
+`
 
 
-type Props = {}
+const Dashboard = () => {
 
-const Dashboard = (props: Props) => {
-
+  const {data:kpi} =  useGetKpisQuery()
+  if(!kpi) return <LoadingIcon>
+    <Image src={load} alt='loadicon' />
+    <Text>Loading.... Please wait</Text>
+  </LoadingIcon>
  
   return (
     <Container>

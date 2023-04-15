@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useGetKpisQuery } from "../state/api";
 import { useMemo, useState } from "react";
 import regression, { DataPoint } from "regression";
+import load from '../assets/load.gif'
 import {
   CartesianGrid,
   Label,
@@ -56,9 +57,25 @@ const H4 = styled.h4`
   margin-bottom: 0;
 `;
 
+// loading style
+const LoadingIcon = styled.div`
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+`
+const Image = styled.img`
+width:100px;
+height:100px;
+
+`
+
 const Predictions = () => {
   const [isprediction, setIsprediction] = useState<boolean>(false);
   const { data: kpis } = useGetKpisQuery();
+
 
   const formatedData = useMemo(() => {
     if (!kpis) return [];
@@ -79,6 +96,11 @@ const Predictions = () => {
       };
     });
   }, [kpis]);
+
+  if(!kpis) return <LoadingIcon>
+  <Image src={load} alt='loadicon' />
+  <Text>Loading.... Please wait</Text>
+</LoadingIcon>
   return (
     <Containeter>
       <Wrapper>

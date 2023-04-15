@@ -8,15 +8,17 @@ import mongoose from "mongoose";
 import kpiRouter from  "./routers/kpi.js";
 import productRouter from "./routers/products.js"
 import transactionRouter from "./routers/transactions.js"
-import Transaction from "./model/transactions.js";
-import { transactions } from "./data.js";
-import { kpis } from "./data.js";
-import KPI from "./model/kpi.js";
-import { products } from "./data.js";
-import Product from "./model/products.js";
+// import Transaction from "./model/transactions.js";
+// import { transactions } from "./data.js";
+// import { kpis } from "./data.js";
+// import KPI from "./model/kpi.js";
+// import { products } from "./data.js";
+// import Product from "./model/products.js";
 
 const ConectTodb = async()=>{
-    await mongoose.connect(`mongodb://127.0.0.1:27017/finance`)
+    // await mongoose.connect(`mongodb://127.0.0.1:27017/finance`)
+    await mongoose.connect(process.env.DB_URL,  { useNewUrlParser: true, useUnifiedTopology: true }  )
+    
     console.log("DB connection sucessful")
     // await mongoose.connection.db.dropDatabase()
     // console.log("Inserting data")
